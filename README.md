@@ -1,48 +1,112 @@
-## UT MLflow Quickstart Challenge
+# UT MLflow Quickstart Challenge
 
-Welcome to the **UT MLflow Quickstart Challenge**! This challenge is designed to help participants implement MLflow in a machine learning project and enhance their skills by building an intelligent system that classifies people into credit score brackets.
+## About Dataset
 
-### Dataset Brief
+### Problem Statement
+You are working as a data scientist in a global finance company. Over the years, the company has collected basic bank details and gathered a substantial amount of credit-related information. The management aims to build an intelligent system that can classify customers into credit score brackets to minimize manual efforts.
 
-**About the Dataset:**
-You are a data scientist at a global finance company. Over the years, this company has amassed a large dataset containing basic bank details and extensive credit-related information about its clients. To streamline internal processes and reduce manual workload, the management wants to build a predictive model that can classify clients into credit score categories. The goal is to use the data available to create an accurate classification model that can predict a person's credit score bracket.
+### Task
+Using a person’s credit-related information, build a machine learning model that can classify their credit score.
 
-**Problem Statement:**
-Given a person’s credit-related data, your task is to develop a machine learning model that can accurately classify their credit score.
+## Dataset Columns
 
-### Dataset Columns Description
+| Column                   | Description                                                   |
+|--------------------------|---------------------------------------------------------------|
+| `Customer_ID`            | Represents a unique identification of a person                |
+| `Month`                  | Represents the month of the year                              |
+| `Name`                   | Represents the name of a person                               |
+| `Age`                    | Represents the age of the person                              |
+| `SSN`                    | Represents the social security number of a person             |
+| `Occupation`             | Represents the occupation of the person                       |
+| `Annual_Income`          | Represents the annual income of the person                    |
+| `Monthly_Inhand_Salary`  | Represents the monthly base salary of a person                |
+| `Num_Bank_Accounts`      | Represents the number of bank accounts a person holds         |
+| `Num_Credit_Card`        | Represents the number of other credit cards held by a person  |
+| `Interest_Rate`          | Represents the interest rate on credit card                   |
+| `Num_of_Loan`            | Represents the number of loans taken from the bank            |
+| `Type_of_Loan`           | Represents the types of loans taken by a person               |
+| `Delay_from_due_date`    | Represents the average days delayed from the payment date     |
+| `Num_of_Delayed_Payment` | Represents the average number of payments delayed             |
+| `Changed_Credit_Limit`   | Represents the percentage change in credit card limit         |
+| `Num_Credit_Inquiries`   | Represents the number of credit card inquiries                |
+| `Credit_Mix`             | Represents the classification of the mix of credits           |
+| `Outstanding_Debt`       | Represents the remaining debt to be paid (in USD)             |
+| `Credit_Utilization_Ratio`| Represents the utilization ratio of credit card              |
+| `Credit_History_Age`     | Represents the age of credit history of the person            |
+| `Payment_of_Min_Amount`  | Represents whether only the minimum amount was paid           |
+| `Total_EMI_per_month`    | Represents the monthly EMI payments (in USD)                  |
+| `Amount_invested_monthly`| Represents the monthly amount invested by the customer (in USD)|
+| `Payment_Behaviour`      | Represents the payment behavior of the customer               |
+| `Monthly_Balance`        | Represents the monthly balance amount of the customer (in USD)|
 
-The dataset contains the following columns:
+## Challenge Objective
 
-- **Customer_ID**: Unique identifier for each entry.
-- **Month**: Specifies the month of the year.
-- **Name**: The full name of the person.
-- **Age**: The age of the person.
-- **SSN**: Social Security Number, a unique identification number for each person.
-- **Occupation**: The occupation or job title of the person.
-- **Annual_Income**: The total yearly income of the person.
-- **Monthly_Inhand_Salary**: The person’s monthly base salary.
-- **Num_Bank_Accounts**: The number of bank accounts owned by the person.
-- **Num_Credit_Card**: The number of credit cards held by the person.
-- **Interest_Rate**: The interest rate on the credit card held by the person.
-- **Num_of_Loan**: The total number of loans taken by the person.
-- **Type_of_Loan**: The types of loans taken (e.g., personal, home, auto).
-- **Delay_from_due_date**: The average days delayed from the due payment date.
-- **Num_of_Delayed_Payment**: The average number of delayed payments by the person.
-- **Changed_Credit_Limit**: The percentage change in the person's credit limit.
-- **Num_Credit_Inquiries**: The number of credit inquiries made by the person.
-- **Credit_Mix**: Classification of the person's mix of credits.
-- **Outstanding_Debt**: The remaining debt amount owed by the person (in USD).
-- **Credit_Utilization_Ratio**: The person's credit card utilization ratio.
-- **Credit_History_Age**: The length of the person's credit history.
-- **Payment_of_Min_Amount**: Indicator of whether only the minimum amount was paid by the person.
-- **Total_EMI_per_month**: Monthly EMI (equated monthly installment) payments in USD.
-- **Amount_invested_monthly**: The monthly amount invested by the person (in USD).
-- **Payment_Behaviour**: The person's payment behavior (e.g., prompt or delayed).
-- **Monthly_Balance**: The ending monthly balance amount (in USD).
+This challenge requires the implementation of MLflow tracking in every stage of the workflow, from data preprocessing to model training and evaluation. The winning submission will be the model that achieves the highest accuracy based on **Balanced Accuracy**.
 
-### Challenge Objective
+### Required Files for Submission
 
-The primary goal of this challenge is to use MLflow to track and manage each step of the model development lifecycle. This involves implementing MLflow to log parameters, metrics, and models for the entire machine learning workflow, from data preparation and training to evaluation. The winner of the challenge will be determined by the accuracy of the final model, with the highest accuracy receiving top honors.
+To participate in the challenge, please submit the following files:
 
-**Best of luck, and may the best model win!**
+1. **data_config.yaml**: 
+   - This file should contain feature names and the target (prediction) variable.
+   - Use the template provided for data configuration.
+
+```yaml
+feature_columns:
+  - Credit_Mix
+  - Payment_of_Min_Amount
+  - Payment_Behaviour
+  - Occupation_Accountant
+  - Occupation_Architect
+  - Occupation_Developer
+  - Occupation_Doctor
+  - Occupation_Engineer
+  - Occupation_Entrepreneur
+  - Occupation_Journalist
+  - Occupation_Lawyer
+  - Occupation_Manager
+  - Occupation_Mechanic
+  - Occupation_Media_Manager
+  - Occupation_Musician
+  - Occupation_Scientist
+  - Occupation_Teacher
+  - Occupation_Unknown
+  - Occupation_Writer
+  - Age
+  - Annual_Income
+  - Monthly_Inhand_Salary
+  - Num_Bank_Accounts
+  - Num_Credit_Card
+  - Interest_Rate
+  - Num_of_Loan
+  - Delay_from_due_date
+  - Num_of_Delayed_Payment
+  - Changed_Credit_Limit
+  - Num_Credit_Inquiries
+  - Outstanding_Debt
+  - Credit_Utilization_Ratio
+  - Credit_History_Age
+  - Total_EMI_per_month
+  - Amount_invested_monthly
+  - Monthly_Balance
+  - Credit-Builder Loan
+  - Personal Loan
+  - Mortgage Loan
+  - Home Equity Loan
+  - Debt Consolidation Loan
+  - Payday Loan
+  - Student Loan
+  - Auto Loan
+
+target_column: Credit_Score
+```
+
+2. **Preprocessed Test Dataset**:
+   - The test dataset after preprocessing steps should be submitted.
+
+3. **Model File**:
+   - Submit the trained model in either `.h5` or `.pkl` (pickle) format.
+
+---
+
+Good luck with the challenge, and may the best model win!
